@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Lichess Game Review",
+  "version": "0.2.0",
+  "description": "Chess.com-style move review using Lichess engine evaluations.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lichess-review@local"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lichess.org/*"
+      ],
+      "js": [
+        "opening-book.js",
+        "chess-lib.js",
+        "page.js"
+      ],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://lichess.org/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/chesscom/*.png",
+        "opening-book.json"
+      ],
+      "matches": [
+        "https://lichess.org/*"
+      ]
+    }
+  ]
+}
